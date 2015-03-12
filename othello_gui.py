@@ -31,6 +31,10 @@ class OthelloGUI:
             self._canvas = tkinter.Canvas(master=self._root_window, width=self._col*50, height=self._row*50, background='green')
             self._canvas.grid(row=0, column=0, padx=20, pady=20, columnspan=2,
                               sticky=tkinter.N + tkinter.S + tkinter.W + tkinter.E)
+            self._root_window.rowconfigure(0, weight=1)
+            self._root_window.columnconfigure(0, weight=1)
+            
+            # Get width and height of canvas
             self._width = self._canvas.winfo_width()
             self._height = self._canvas.winfo_height()
             
@@ -39,24 +43,32 @@ class OthelloGUI:
             self._t.set("Player B's turn")
             self._t_label = tkinter.Label(master=self._root_window, textvariable=self._t)
             self._t_label.grid(row=1, column=0, pady=5)
+            self._root_window.rowconfigure(1, weight=1)
+            self._root_window.columnconfigure(0, weight=1)
 
             # Most label
             self._m = tkinter.StringVar()
             self._m.set('Most: {}'.format(self._most))
             self._m_label = tkinter.Label(master=self._root_window, textvariable=self._m)
             self._m_label.grid(row=1, column=1, pady=5)
+            self._root_window.rowconfigure(1, weight=1)
+            self._root_window.columnconfigure(1, weight=1)
             
             # Black score label
             self._b = tkinter.StringVar()
             self._b.set('Black: 2')
             self._b_label = tkinter.Label(master=self._root_window, textvariable=self._b)
             self._b_label.grid(row=2, column=0, pady=10)
+            self._root_window.rowconfigure(2, weight=1)
+            self._root_window.columnconfigure(0, weight=1)
             
             # White score label
             self._w = tkinter.StringVar()
             self._w.set('White: 2')
             self._w_label = tkinter.Label(self._root_window, textvariable=self._w)
             self._w_label.grid(row=2, column=1, pady=10)
+            self._root_window.rowconfigure(2, weight=1)
+            self._root_window.columnconfigure(1, weight=1)
             
             # Bind commands
             self._canvas.bind('<Motion>', self._mouse_moved)
@@ -156,57 +168,79 @@ class DialogWindow:
         # Row label
         self._row_label = tkinter.Label(master=self._dialog_window, text='Rows ')
         self._row_label.grid(row=0, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(0, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
         
         # Row drop down menu
         self._r = tkinter.IntVar()
         self._r.set(4)                # Set default row = 4
         self._row = tkinter.OptionMenu(self._dialog_window, self._r, 4, 6, 8, 10, 12, 14, 16)
         self._row.grid(row=0, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(0, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
 
         # Column label
         self._col_label = tkinter.Label(master=self._dialog_window, text='Columns ')
         self._col_label.grid(row=1, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(1, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
         
         # Column drop down menu
         self._c = tkinter.IntVar()
         self._c.set(4)                # Set default col = 4
         self._col = tkinter.OptionMenu(self._dialog_window, self._c, 4, 6, 8, 10, 12, 14, 16)
         self._col.grid(row=1, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(1, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
 
         # Turn label
         self._turn_label = tkinter.Label(master=self._dialog_window, text='Starting Player ')
         self._turn_label.grid(row=2, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(2, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
         
         # Turn drop down menu
         self._t = tkinter.StringVar()
         self._t.set('Black')         # Set default starting player = Black
         self._turn = tkinter.OptionMenu(self._dialog_window, self._t, 'Black', 'White')
         self._turn.grid(row=2, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(2, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
 
         # Top left label
         self._top_left_label = tkinter.Label(master=self._dialog_window, text='Top Left Disc ')
         self._top_left_label.grid(row=3, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(3, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
         
         # Top left drop down menu
         self._t_l = tkinter.StringVar()
         self._t_l.set('Black')     # Set default top left disc = Black
         self._top_left = tkinter.OptionMenu(self._dialog_window, self._t_l, 'Black', 'White')
         self._top_left.grid(row=3, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(3, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
 
         # Most discs win label
         self._most_label = tkinter.Label(master=self._dialog_window, text='Most Discs Win? ')
         self._most_label.grid(row=4, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(4, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
         
         # Most discs drop down menu
         self._m = tkinter.StringVar()
         self._m.set('Yes')           # Set default most discs win = Yes
         self._most = tkinter.OptionMenu(self._dialog_window, self._m, 'Yes', 'No')
         self._most.grid(row=4, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(4, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
 
         # Enter button
         self._enter = False             # Enter button hasn't been clicked yet
         self._enter_button = tkinter.Button(master=self._dialog_window, text='ENTER', command=self._clicked_enter)
         self._enter_button.grid(row=5, column=1, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(5, weight=1)
+        self._dialog_window.columnconfigure(1, weight=1)
     
     def display(self)->None:
         '''Displays the dialog window by making the root window wait until dialog window is close'''
