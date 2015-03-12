@@ -58,7 +58,7 @@ class OthelloGUI:
             self._b = tkinter.StringVar()
             self._b.set('Black: 2')
             self._b_label = tkinter.Label(master=self._root_window, textvariable=self._b)
-            self._b_label.grid(row=2, column=0, pady=10)
+            self._b_label.grid(row=2, column=0, pady=5)
             self._root_window.rowconfigure(2, weight=1)
             self._root_window.columnconfigure(0, weight=1)
             
@@ -66,7 +66,7 @@ class OthelloGUI:
             self._w = tkinter.StringVar()
             self._w.set('White: 2')
             self._w_label = tkinter.Label(self._root_window, textvariable=self._w)
-            self._w_label.grid(row=2, column=1, pady=10)
+            self._w_label.grid(row=2, column=1, pady=5)
             self._root_window.rowconfigure(2, weight=1)
             self._root_window.columnconfigure(1, weight=1)
             
