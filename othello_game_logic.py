@@ -1,4 +1,4 @@
-# Project 4: Othello Game Logic
+# Project 5: Othello Game Logic
 
 class InvalidOthelloMoveError(Exception):
     '''Raised whenever an invalid move is made'''
