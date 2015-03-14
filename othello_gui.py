@@ -238,7 +238,13 @@ class DialogWindow:
         # Enter button
         self._enter = False             # Enter button hasn't been clicked yet
         self._enter_button = tkinter.Button(master=self._dialog_window, text='ENTER', command=self._clicked_enter)
-        self._enter_button.grid(row=5, column=1, sticky=tkinter.W)
+        self._enter_button.grid(row=5, column=0, sticky=tkinter.W)
+        self._dialog_window.rowconfigure(5, weight=1)
+        self._dialog_window.columnconfigure(0, weight=1)
+        
+        # Cancel button 
+        self._cancel_button = tkinter.Button(master=self._dialog_window, text='CANCEL', command=self._clicked_cancel)
+        self._cancel_button.grid(row=5, column=1, sticky=tkinter.W)
         self._dialog_window.rowconfigure(5, weight=1)
         self._dialog_window.columnconfigure(1, weight=1)
     
@@ -277,8 +283,12 @@ class DialogWindow:
         return self._enter
 
     def _clicked_enter(self)->None:
-        '''When enter button is clicked, destroys the dialog window'''
+        '''When enter button is clicked, destroy the dialog window and set enter=True'''
         self._enter = True
+        self._dialog_window.destroy()
+        
+    def _clicked_cancel(self)->None:
+        '''When cancel button is clicked, destroy the dialog window'''
         self._dialog_window.destroy()
 
 if __name__ == '__main__':
