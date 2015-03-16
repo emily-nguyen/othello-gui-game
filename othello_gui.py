@@ -94,6 +94,7 @@ class OthelloGUI:
         
         # Creates highlighted cell if move is valid
         if self._othello_game._is_valid_move(row+1, col+1):
+            # create_rectangle(x1, y1, x2, y2) -- top left and bottom right corner coordinates 
             self._canvas.create_rectangle(col/self._col * self._width, row/self._row * self._height, (col+1)/self._col * self._width, (row+1)/self._row * self._height, fill='#00CC66')
 
     def _update_labels(self)->None:
@@ -238,13 +239,13 @@ class DialogWindow:
         # Enter button
         self._enter = False             # Enter button hasn't been clicked yet
         self._enter_button = tkinter.Button(master=self._dialog_window, text='ENTER', command=self._clicked_enter)
-        self._enter_button.grid(row=5, column=0, sticky=tkinter.W)
+        self._enter_button.grid(row=5, column=0, padx=5, pady=5, sticky=tkinter.W)
         self._dialog_window.rowconfigure(5, weight=1)
         self._dialog_window.columnconfigure(0, weight=1)
         
         # Cancel button 
         self._cancel_button = tkinter.Button(master=self._dialog_window, text='CANCEL', command=self._clicked_cancel)
-        self._cancel_button.grid(row=5, column=1, sticky=tkinter.W)
+        self._cancel_button.grid(row=5, column=1, padx=5, pady=5, sticky=tkinter.W)
         self._dialog_window.rowconfigure(5, weight=1)
         self._dialog_window.columnconfigure(1, weight=1)
     
